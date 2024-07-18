@@ -1,0 +1,2810 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/27/2024 9:10:34 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ALEXSHANGEETH"
+  DTS:CreatorName="ALEXSHANGEETH\shang"
+  DTS:DTSID="{93D7F74E-CEB2-48AF-9574-04BF84DBD043}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{591B37EC-78C4-46F7-A5D9-88990567ECA7}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ALEXSHANGEETH.MyMusic_DW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C2641F18-BF13-4AE8-99BA-9503EFE3EF00}"
+      DTS:ObjectName="ALEXSHANGEETH.MyMusic_DW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=ALEXSHANGEETH;Initial Catalog=MyMusic_DW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{C2641F18-BF13-4AE8-99BA-9503EFE3EF00}ALEXSHANGEETH.MyMusic_DW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ALEXSHANGEETH.MyMusic_Staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3F69D1CD-9F7B-401B-8140-08E5C769444E}"
+      DTS:ObjectName="ALEXSHANGEETH.MyMusic_Staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=ALEXSHANGEETH;Initial Catalog=MyMusic_Staging;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{3F69D1CD-9F7B-401B-8140-08E5C769444E}ALEXSHANGEETH.MyMusic_Staging;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Transfrom and load Customer"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{11717FAF-C9F7-4B90-8CD1-8DA89F842258}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transfrom and load Customer"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Transfrom and load Customer\Extract from Employee Stagging"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Extract from Employee Stagging"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Stg_Employee]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ALEXSHANGEETH.MyMusic_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[ALEXSHANGEETH.MyMusic_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      length="50"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[PostalCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[PostalCode]"
+                      length="50"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[PostalCode]"
+                      name="PostalCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[EmployeeId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[EmployeeId]"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[EmployeeId]"
+                      name="EmployeeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[LastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      length="20"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      length="20"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[Title]"
+                      length="30"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Title]"
+                      name="Title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[ReportsTo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[ReportsTo]"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[ReportsTo]"
+                      name="ReportsTo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[BirthDate]"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[BirthDate]"
+                      name="BirthDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[HireDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[HireDate]"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[HireDate]"
+                      name="HireDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Address]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                      length="70"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Address]"
+                      name="Address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Phone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      length="24"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Phone]"
+                      name="Phone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Fax]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[Fax]"
+                      length="24"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Fax]"
+                      name="Fax"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      length="60"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="40"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[EmployeeId]"
+                      dataType="i4"
+                      name="EmployeeId" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="20"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="30"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[ReportsTo]"
+                      dataType="i4"
+                      name="ReportsTo" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[HireDate]"
+                      dataType="dbTimeStamp"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="70"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      dataType="wstr"
+                      length="40"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="40"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      name="Fax" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="60"
+                      name="Email" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[EmployeeId]"
+                      dataType="i4"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[EmployeeId]"
+                      name="EmployeeId" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[Title]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[Title]"
+                      name="Title" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[ReportsTo]"
+                      dataType="i4"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[ReportsTo]"
+                      name="ReportsTo" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[BirthDate]"
+                      name="BirthDate" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[HireDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[HireDate]"
+                      name="HireDate" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[Address]"
+                      dataType="wstr"
+                      length="70"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[Address]"
+                      name="Address" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[City]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[State]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[State]"
+                      name="State" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[Country]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[PostalCode]"
+                      name="PostalCode" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                      name="Phone" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[Fax]"
+                      name="Fax" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transfrom and load Customer\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[SupportRepId]"
+                      cachedDataType="i4"
+                      cachedName="SupportRepId"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[SupportRepId]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FirstName"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="LastName"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[CustomerId]"
+                      cachedDataType="i4"
+                      cachedName="CustomerId"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[CustomerId]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[Company]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="Company"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[Company]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[Address]"
+                      cachedDataType="wstr"
+                      cachedLength="70"
+                      cachedName="Address"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[Address]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="City"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[City]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[State]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="State"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[State]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="Country"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[PostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="PostalCode"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[PostalCode]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[Phone]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="Phone"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[Phone]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[Fax]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="Fax"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[Fax]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[Email]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="Email"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[Email]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[EmployeeId]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeId"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[EmployeeId]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="City"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[City]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[PostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="PostalCode"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[PostalCode]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="LastName"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="FirstName"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Title"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[Title]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[ReportsTo]"
+                      cachedDataType="i4"
+                      cachedName="ReportsTo"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[ReportsTo]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[BirthDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="BirthDate"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[BirthDate]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[HireDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="HireDate"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[HireDate]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[Address]"
+                      cachedDataType="wstr"
+                      cachedLength="70"
+                      cachedName="Address"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[Address]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[State]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="State"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[State]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="Country"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[Phone]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="Phone"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[Phone]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[Fax]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="Fax"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[Fax]" />
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[Email]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="Email"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[Email]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output]"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[FirstName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[FirstName]"
+                      name="FirstName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[FirstName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[LastName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[LastName]"
+                      name="LastName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[LastName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[CustomerId]"
+                      dataType="i4"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[CustomerId]"
+                      name="CustomerId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[CustomerId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Company]"
+                      dataType="wstr"
+                      length="80"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Company]"
+                      name="Company">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[Company]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Address]"
+                      dataType="wstr"
+                      length="70"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Address]"
+                      name="Address">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[Address]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[City]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[City]"
+                      name="City">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[City]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[State]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[State]"
+                      name="State">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[State]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Country]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Country]"
+                      name="Country">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[Country]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[PostalCode]"
+                      name="PostalCode">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[PostalCode]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Phone]"
+                      name="Phone">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[Phone]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Fax]"
+                      name="Fax">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[Fax]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Email]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Email]"
+                      name="Email">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input].Columns[Email]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[City (1)]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[City (1)]"
+                      name="City (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[City]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[PostalCode (1)]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[PostalCode (1)]"
+                      name="PostalCode (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[PostalCode]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[LastName (1)]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[LastName (1)]"
+                      name="LastName (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[LastName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[FirstName (1)]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[FirstName (1)]"
+                      name="FirstName (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[FirstName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Title]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Title]"
+                      name="Title">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[Title]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[ReportsTo]"
+                      dataType="i4"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[ReportsTo]"
+                      name="ReportsTo">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[ReportsTo]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[BirthDate]"
+                      name="BirthDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[BirthDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[HireDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[HireDate]"
+                      name="HireDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[HireDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Address (1)]"
+                      dataType="wstr"
+                      length="70"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Address (1)]"
+                      name="Address (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[Address]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[State (1)]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[State (1)]"
+                      name="State (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[State]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Country (1)]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Country (1)]"
+                      name="Country (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[Country]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Phone (1)]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Phone (1)]"
+                      name="Phone (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[Phone]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Fax (1)]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Fax (1)]"
+                      name="Fax (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[Fax]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Email (1)]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output].Columns[Email (1)]"
+                      name="Email (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input].Columns[Email]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transfrom and load Customer\Slowly Changing Dimension"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+              name="Slowly Changing Dimension"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SELECT statement used to create a schema rowset."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                  name="CurrentRowWhere"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                  name="UpdateChangingAttributeHistory">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                  name="FailOnFixedAttributeChange">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column name for the inferred member."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether inferred member updates are detected."
+                  name="EnableInferredMember">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.UInt32"
+                  description="Specifies that all rows in the input are new or the transformation detects the change type."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transfrom and load Customer\Slowly Changing Dimension.Connections[LookupConnection]"
+                  description="Defines the connection to use for lookups in the dimension table"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Transfrom and load Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+                  name="Slowly Changing Dimension Input">
+                  <externalMetadataColumns
+                    isUsed="True" />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transfrom and load Customer\Slowly Changing Dimension.Outputs[Unchanged Output]"
+                  description="Unchanged rows"
+                  exclusionGroup="1"
+                  name="Unchanged Output"
+                  synchronousInputId="Package\Transfrom and load Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transfrom and load Customer\Slowly Changing Dimension.Outputs[New Output]"
+                  description="New rows"
+                  exclusionGroup="1"
+                  name="New Output"
+                  synchronousInputId="Package\Transfrom and load Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transfrom and load Customer\Slowly Changing Dimension.Outputs[Fixed Attribute Output]"
+                  description="Rows with changes in columns tagged FixedAttribute"
+                  exclusionGroup="1"
+                  name="Fixed Attribute Output"
+                  synchronousInputId="Package\Transfrom and load Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transfrom and load Customer\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]"
+                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                  exclusionGroup="1"
+                  name="Changing Attribute Updates Output"
+                  synchronousInputId="Package\Transfrom and load Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transfrom and load Customer\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]"
+                  description="HistoricalAttribute (Type 2) changes result in these new rows"
+                  exclusionGroup="2"
+                  name="Historical Attribute Inserts Output"
+                  synchronousInputId="Package\Transfrom and load Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transfrom and load Customer\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]"
+                  description="Information to update unpopulated initial dimension row"
+                  exclusionGroup="1"
+                  name="Inferred Member Updates Output"
+                  synchronousInputId="Package\Transfrom and load Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transfrom and load Customer\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Transfrom and load Customer\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Inputs[Sort Input].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FirstName"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[FirstName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Inputs[Sort Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="LastName"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[LastName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Inputs[Sort Input].Columns[CustomerId]"
+                      cachedDataType="i4"
+                      cachedName="CustomerId"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[CustomerId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Inputs[Sort Input].Columns[Company]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="Company"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Company]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Inputs[Sort Input].Columns[Address]"
+                      cachedDataType="wstr"
+                      cachedLength="70"
+                      cachedName="Address"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Address]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Inputs[Sort Input].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="City"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[City]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Inputs[Sort Input].Columns[State]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="State"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[State]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Inputs[Sort Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="Country"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Country]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Inputs[Sort Input].Columns[PostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="PostalCode"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[PostalCode]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Inputs[Sort Input].Columns[Phone]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="Phone"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Phone]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Inputs[Sort Input].Columns[Fax]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="Fax"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Fax]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Inputs[Sort Input].Columns[Email]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="Email"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Email]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Inputs[Sort Input].Columns[SupportRepId]"
+                      cachedDataType="i4"
+                      cachedName="SupportRepId"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[SupportRepId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[FirstName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[FirstName]"
+                      name="FirstName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[FirstName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[LastName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[LastName]"
+                      name="LastName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[LastName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[CustomerId]"
+                      dataType="i4"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[CustomerId]"
+                      name="CustomerId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[CustomerId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[Company]"
+                      dataType="wstr"
+                      length="80"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[Company]"
+                      name="Company">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Company]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[Address]"
+                      dataType="wstr"
+                      length="70"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[Address]"
+                      name="Address">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Address]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[City]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[City]"
+                      name="City">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[City]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[State]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[State]"
+                      name="State">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[State]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[Country]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[Country]"
+                      name="Country">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Country]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[PostalCode]"
+                      name="PostalCode">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[PostalCode]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[Phone]"
+                      name="Phone">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Phone]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[Fax]"
+                      name="Fax">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Fax]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[Email]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[Email]"
+                      name="Email">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Email]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[SupportRepId]"
+                      dataType="i4"
+                      lineageId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output].Columns[SupportRepId]"
+                      name="SupportRepId"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[SupportRepId]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transfrom and load Customer\Sort 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Transfrom and load Customer\Sort 1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Inputs[Sort Input].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="City"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[City]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Inputs[Sort Input].Columns[PostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="PostalCode"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[PostalCode]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Inputs[Sort Input].Columns[EmployeeId]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeId"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[EmployeeId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Inputs[Sort Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="LastName"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[LastName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Inputs[Sort Input].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="FirstName"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[FirstName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Inputs[Sort Input].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Title"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Title]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Inputs[Sort Input].Columns[ReportsTo]"
+                      cachedDataType="i4"
+                      cachedName="ReportsTo"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[ReportsTo]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Inputs[Sort Input].Columns[BirthDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="BirthDate"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[BirthDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Inputs[Sort Input].Columns[HireDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="HireDate"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[HireDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Inputs[Sort Input].Columns[Address]"
+                      cachedDataType="wstr"
+                      cachedLength="70"
+                      cachedName="Address"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Address]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Inputs[Sort Input].Columns[State]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="State"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[State]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Inputs[Sort Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="Country"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Country]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Inputs[Sort Input].Columns[Phone]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="Phone"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Phone]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Inputs[Sort Input].Columns[Fax]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="Fax"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Fax]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Inputs[Sort Input].Columns[Email]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="Email"
+                      lineageId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Email]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[City]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[City]"
+                      name="City">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[City]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[PostalCode]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[PostalCode]"
+                      name="PostalCode">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[PostalCode]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[EmployeeId]"
+                      dataType="i4"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[EmployeeId]"
+                      name="EmployeeId"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[EmployeeId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[LastName]"
+                      name="LastName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[LastName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[FirstName]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[FirstName]"
+                      name="FirstName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[FirstName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[Title]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[Title]"
+                      name="Title">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Title]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[ReportsTo]"
+                      dataType="i4"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[ReportsTo]"
+                      name="ReportsTo">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[ReportsTo]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[BirthDate]"
+                      name="BirthDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[BirthDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[HireDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[HireDate]"
+                      name="HireDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[HireDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[Address]"
+                      dataType="wstr"
+                      length="70"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[Address]"
+                      name="Address">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Address]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[State]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[State]"
+                      name="State">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[State]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[Country]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[Country]"
+                      name="Country">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Country]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[Phone]"
+                      name="Phone">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Phone]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[Fax]"
+                      name="Fax">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Fax]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[Email]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output].Columns[Email]"
+                      name="Email">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output].Columns[Email]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="‘Extract from Customer Staging’"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Stg_Customer]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ALEXSHANGEETH.MyMusic_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[ALEXSHANGEETH.MyMusic_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      length="50"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[LastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      length="50"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[CustomerId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[CustomerId]"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[CustomerId]"
+                      name="CustomerId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Company]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[Company]"
+                      length="80"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Company]"
+                      name="Company"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Address]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                      length="70"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Address]"
+                      name="Address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[PostalCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[PostalCode]"
+                      length="10"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[PostalCode]"
+                      name="PostalCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Phone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      length="24"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Phone]"
+                      name="Phone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Fax]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[Fax]"
+                      length="24"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Fax]"
+                      name="Fax"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      length="60"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[SupportRepId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[SupportRepId]"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].Columns[SupportRepId]"
+                      name="SupportRepId"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="40"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[CustomerId]"
+                      dataType="i4"
+                      name="CustomerId" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[Company]"
+                      dataType="wstr"
+                      length="80"
+                      name="Company" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="70"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="40"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      dataType="wstr"
+                      length="40"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="40"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      name="Fax" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="60"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output].ExternalColumns[SupportRepId]"
+                      dataType="i4"
+                      name="SupportRepId" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[CustomerId]"
+                      dataType="i4"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[CustomerId]"
+                      name="CustomerId" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[Company]"
+                      dataType="wstr"
+                      length="80"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[Company]"
+                      name="Company" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[Address]"
+                      dataType="wstr"
+                      length="70"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[Address]"
+                      name="Address" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[City]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[State]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[State]"
+                      name="State" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[Country]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[PostalCode]"
+                      name="PostalCode" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                      name="Phone" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[Fax]"
+                      name="Fax" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[SupportRepId]"
+                      dataType="i4"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[SupportRepId]"
+                      name="SupportRepId" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Transfrom and load Customer.Paths[Merge Join Output]"
+              endId="Package\Transfrom and load Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+              name="Merge Join Output"
+              startId="Package\Transfrom and load Customer\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Transfrom and load Customer.Paths[OLE DB Source Output]"
+              endId="Package\Transfrom and load Customer\Sort.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Transfrom and load Customer\‘Extract from Customer Staging’.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Transfrom and load Customer.Paths[OLE DB Source Output1]"
+              endId="Package\Transfrom and load Customer\Sort 1.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Transfrom and load Customer\Extract from Employee Stagging.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Transfrom and load Customer.Paths[Sort Output]"
+              endId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Transfrom and load Customer\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Transfrom and load Customer.Paths[Sort Output1]"
+              endId="Package\Transfrom and load Customer\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Transfrom and load Customer\Sort 1.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transfrom and load Fact_InvoiceLine"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{85f699e8-4c6f-451d-8ff9-6d09e64da1a9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transfrom and load Fact_InvoiceLine"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transfrom and load Track"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{bcab6c0f-3f12-4523-9057-b1fa8269b4c9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transfrom and load Track"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{000EB9D5-9230-47D8-9FF2-3C3241B95ED3}"
+      DTS:From="Package\Transfrom and load Customer"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Transfrom and load Track" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{3A439BB0-86A0-4D7A-AC98-1306BF970F1D}"
+      DTS:From="Package\Transfrom and load Track"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Transfrom and load Fact_InvoiceLine" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="219.2,41.6"
+          Id="Package\Transfrom and load Customer"
+          TopLeft="354.285715039896,52.7647058361026" />
+        <NodeLayout
+          Size="200,41.6"
+          Id="Package\Transfrom and load Track"
+          TopLeft="352.857143608283,143.764705756338" />
+        <NodeLayout
+          Size="252.8,41.6"
+          Id="Package\Transfrom and load Fact_InvoiceLine"
+          TopLeft="322.142857828615,249.188235164751" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="463.885715039896,94.3647058361026">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-11.0285714316125,49.399999920235"
+              Start="0,0"
+              End="-11.0285714316125,41.899999920235">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.6999999601175" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.6999999601175"
+                    Point2="0,24.6999999601175"
+                    Point3="-4,24.6999999601175" />
+                  <mssgle:LineSegment
+                    End="-7.02857143161248,24.6999999601175" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-7.02857143161248,24.6999999601175"
+                    Point2="-11.0285714316125,24.6999999601175"
+                    Point3="-11.0285714316125,28.6999999601175" />
+                  <mssgle:LineSegment
+                    End="-11.0285714316125,41.899999920235" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="450.700000718449,185.364705756338">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63.8235294084131"
+              Start="0,0"
+              End="0,56.3235294084131">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.3235294084131" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Transfrom and load Customer">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="228,41.6"
+          Id="Package\Transfrom and load Customer\‘Extract from Customer Staging’"
+          TopLeft="249.999997168779,37.0000003427267" />
+        <NodeLayout
+          Size="229.6,41.6"
+          Id="Package\Transfrom and load Customer\Extract from Employee Stagging"
+          TopLeft="523.199997392297,32.0000004172325" />
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\Transfrom and load Customer\Slowly Changing Dimension"
+          TopLeft="387.999994218349,362.999994590878" />
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\Transfrom and load Customer\Sort"
+          TopLeft="315.999995291233,145.99999782443" />
+        <EdgeLayout
+          Id="Package\Transfrom and load Customer.Paths[OLE DB Source Output]"
+          TopLeft="364.399996230006,78.6000003427267">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67.3999974817038"
+              Start="0,0"
+              End="0,59.8999974817038">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.8999974817038" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="106.4,41.6"
+          Id="Package\Transfrom and load Customer\Sort 1"
+          TopLeft="564.999991580844,150.999997749925" />
+        <EdgeLayout
+          Id="Package\Transfrom and load Customer.Paths[OLE DB Source Output1]"
+          TopLeft="637.999997392297,73.6000004172325">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-19.8000058114528,77.3999973326922"
+              Start="0,0"
+              End="-19.8000058114528,69.8999973326922">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.6999986663461" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.6999986663461"
+                    Point2="0,38.6999986663461"
+                    Point3="-4,38.6999986663461" />
+                  <mssgle:LineSegment
+                    End="-15.8000058114528,38.6999986663461" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-15.8000058114528,38.6999986663461"
+                    Point2="-19.8000058114528,38.6999986663461"
+                    Point3="-19.8000058114528,42.6999986663461" />
+                  <mssgle:LineSegment
+                    End="-19.8000058114528,69.8999973326922" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Transfrom and load Customer\Merge Join"
+          TopLeft="465.999993056059,237.999996453524" />
+        <EdgeLayout
+          Id="Package\Transfrom and load Customer.Paths[Sort Output]"
+          TopLeft="364.799995291233,187.59999782443">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="165.999997764826,50.3999986290932"
+              Start="0,0"
+              End="165.999997764826,42.8999986290932">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.1999993145466" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.1999993145466"
+                    Point2="0,25.1999993145466"
+                    Point3="4,25.1999993145466" />
+                  <mssgle:LineSegment
+                    End="161.999997764826,25.1999993145466" />
+                  <mssgle:CubicBezierSegment
+                    Point1="161.999997764826,25.1999993145466"
+                    Point2="165.999997764826,25.1999993145466"
+                    Point3="165.999997764826,29.1999993145466" />
+                  <mssgle:LineSegment
+                    End="165.999997764826,42.8999986290932" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfrom and load Customer.Paths[Sort Output1]"
+          TopLeft="618.199991580844,192.599997749925">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-67.1333318581185,45.399998703599"
+              Start="0,0"
+              End="-67.1333318581185,37.899998703599">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.907804109694" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.907804109694"
+                    Point2="0,26.907804109694"
+                    Point3="-4,26.907804109694" />
+                  <mssgle:LineSegment
+                    End="-63.1333318581185,26.907804109694" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-63.1333318581185,26.907804109694"
+                    Point2="-67.1333318581185,26.907804109694"
+                    Point3="-67.1333318581185,30.907804109694" />
+                  <mssgle:LineSegment
+                    End="-67.1333318581185,37.899998703599" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfrom and load Customer.Paths[Merge Join Output]"
+          TopLeft="530.799993056059,279.599996453524">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-38.7999988377095,83.3999981373548"
+              Start="0,0"
+              End="-38.7999988377095,75.8999981373548">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.6999990686774" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.6999990686774"
+                    Point2="0,41.6999990686774"
+                    Point3="-4,41.6999990686774" />
+                  <mssgle:LineSegment
+                    End="-34.7999988377095,41.6999990686774" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-34.7999988377095,41.6999990686774"
+                    Point2="-38.7999988377095,41.6999990686774"
+                    Point3="-38.7999988377095,45.6999990686774" />
+                  <mssgle:LineSegment
+                    End="-38.7999988377095,75.8999981373548" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfrom and load Customer\‘Extract from Customer Staging’">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfrom and load Customer\Extract from Employee Stagging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
