@@ -1,6 +1,10 @@
 # Data Warehousing and ETL Process Implementation
 ### Project Description
 - This project focuses on the design, development, and implementation of a data warehouse, specifically targeting the ETL (Extract, Transform, Load) process to efficiently manage and analyze data. The project aims to enhance data management and reporting capabilities through dimensional modeling and the integration of OLTP (Online Transaction Processing) data into a robust data warehouse system.
+  ![image](https://github.com/user-attachments/assets/8c4a983b-c32e-4cce-babc-55bf41988a07)
+![image](https://github.com/user-attachments/assets/140d40f9-bb7e-4ad5-8472-e1f9920fb5c2)
+![image](https://github.com/user-attachments/assets/6727e164-020c-477f-a6cd-e001d1bd7213)
+
 
 ### Key Components
 #### 1. Dimensional Modeling
