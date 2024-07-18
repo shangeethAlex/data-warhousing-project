@@ -1,0 +1,81 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\shang\\Desktop\\Y03_S01\\Data warehousing and BI\\Lab\\MultidimensionalProject1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AF3061C9-A065-48B4-8939-1B78B311E192}|MultidimensionalProject1\\MultidimensionalProject1.dwproj|C:\\Users\\shang\\Desktop\\Y03_S01\\Data warehousing and BI\\Lab\\MultidimensionalProject1\\MultidimensionalProject1\\Dim Customer.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
+      "RelativeMoniker": "D:0:0:{AF3061C9-A065-48B4-8939-1B78B311E192}|MultidimensionalProject1\\MultidimensionalProject1.dwproj|solutionrelative:MultidimensionalProject1\\Dim Customer.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF3061C9-A065-48B4-8939-1B78B311E192}|MultidimensionalProject1\\MultidimensionalProject1.dwproj|C:\\Users\\shang\\Desktop\\Y03_S01\\Data warehousing and BI\\Lab\\MultidimensionalProject1\\MultidimensionalProject1\\DSV_SLIIT_Retail_DW.dsv||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
+      "RelativeMoniker": "D:0:0:{AF3061C9-A065-48B4-8939-1B78B311E192}|MultidimensionalProject1\\MultidimensionalProject1.dwproj|solutionrelative:MultidimensionalProject1\\DSV_SLIIT_Retail_DW.dsv||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF3061C9-A065-48B4-8939-1B78B311E192}|MultidimensionalProject1\\MultidimensionalProject1.dwproj|C:\\Users\\shang\\Desktop\\Y03_S01\\Data warehousing and BI\\Lab\\MultidimensionalProject1\\MultidimensionalProject1\\Cube_SLIIT_Retail_DW.cube||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
+      "RelativeMoniker": "D:0:0:{AF3061C9-A065-48B4-8939-1B78B311E192}|MultidimensionalProject1\\MultidimensionalProject1.dwproj|solutionrelative:MultidimensionalProject1\\Cube_SLIIT_Retail_DW.cube||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF3061C9-A065-48B4-8939-1B78B311E192}|MultidimensionalProject1\\MultidimensionalProject1.dwproj|C:\\Users\\shang\\Desktop\\Y03_S01\\Data warehousing and BI\\Lab\\MultidimensionalProject1\\MultidimensionalProject1\\Dim Product.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
+      "RelativeMoniker": "D:0:0:{AF3061C9-A065-48B4-8939-1B78B311E192}|MultidimensionalProject1\\MultidimensionalProject1.dwproj|solutionrelative:MultidimensionalProject1\\Dim Product.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Dim Customer.dim [Design]",
+              "DocumentMoniker": "C:\\Users\\shang\\Desktop\\Y03_S01\\Data warehousing and BI\\Lab\\MultidimensionalProject1\\MultidimensionalProject1\\Dim Customer.dim",
+              "RelativeDocumentMoniker": "MultidimensionalProject1\\Dim Customer.dim",
+              "ToolTip": "C:\\Users\\shang\\Desktop\\Y03_S01\\Data warehousing and BI\\Lab\\MultidimensionalProject1\\MultidimensionalProject1\\Dim Customer.dim [Design]",
+              "RelativeToolTip": "MultidimensionalProject1\\Dim Customer.dim [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-20T08:20:29.545Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Dim Product.dim [Design]",
+              "DocumentMoniker": "C:\\Users\\shang\\Desktop\\Y03_S01\\Data warehousing and BI\\Lab\\MultidimensionalProject1\\MultidimensionalProject1\\Dim Product.dim",
+              "RelativeDocumentMoniker": "MultidimensionalProject1\\Dim Product.dim",
+              "ToolTip": "C:\\Users\\shang\\Desktop\\Y03_S01\\Data warehousing and BI\\Lab\\MultidimensionalProject1\\MultidimensionalProject1\\Dim Product.dim [Design]",
+              "RelativeToolTip": "MultidimensionalProject1\\Dim Product.dim [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-20T08:21:37.531Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Cube_SLIIT_Retail_DW.cube [Design]",
+              "DocumentMoniker": "C:\\Users\\shang\\Desktop\\Y03_S01\\Data warehousing and BI\\Lab\\MultidimensionalProject1\\MultidimensionalProject1\\Cube_SLIIT_Retail_DW.cube",
+              "RelativeDocumentMoniker": "MultidimensionalProject1\\Cube_SLIIT_Retail_DW.cube",
+              "ToolTip": "C:\\Users\\shang\\Desktop\\Y03_S01\\Data warehousing and BI\\Lab\\MultidimensionalProject1\\MultidimensionalProject1\\Cube_SLIIT_Retail_DW.cube [Design]",
+              "RelativeToolTip": "MultidimensionalProject1\\Cube_SLIIT_Retail_DW.cube [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-20T08:19:20.273Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DSV_SLIIT_Retail_DW.dsv [Design]",
+              "DocumentMoniker": "C:\\Users\\shang\\Desktop\\Y03_S01\\Data warehousing and BI\\Lab\\MultidimensionalProject1\\MultidimensionalProject1\\DSV_SLIIT_Retail_DW.dsv",
+              "RelativeDocumentMoniker": "MultidimensionalProject1\\DSV_SLIIT_Retail_DW.dsv",
+              "ToolTip": "C:\\Users\\shang\\Desktop\\Y03_S01\\Data warehousing and BI\\Lab\\MultidimensionalProject1\\MultidimensionalProject1\\DSV_SLIIT_Retail_DW.dsv [Design]",
+              "RelativeToolTip": "MultidimensionalProject1\\DSV_SLIIT_Retail_DW.dsv [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-20T08:14:47.84Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
